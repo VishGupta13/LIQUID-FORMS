@@ -28,9 +28,12 @@ import Preview from './components/user/Preview';
 
 
 
+
 function App() {
   return (
     <div>
+
+      
       <BrowserRouter>
       <Routes>
 
@@ -40,6 +43,8 @@ function App() {
         <Route path="register" element={<Register />}/>
         <Route path="reset-password" element={<ResetPassword />}/>
         <Route path="contactus" element={<ContactUs />}/>
+       
+
 
 
 
