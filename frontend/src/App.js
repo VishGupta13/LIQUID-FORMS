@@ -2,7 +2,6 @@ import logo from './logo.svg';
 import './App.css';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Main from './components/main';
-import Login from './components/main/Login';
 import ContactUs from './components/main/ContactUs';
 
 import Home from './components/main/Home';
@@ -24,10 +23,7 @@ import CustomDesign from './components/user/CustomDesign';
 import ManageForms from './components/user/ManageForms';
 import FormSetting from './components/user/FormSetting';
 import Preview from './components/user/Preview';
-
-
-
-
+import Login from './components/main/Login';
 
 function App() {
   return (

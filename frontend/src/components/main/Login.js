@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./Login.css";
 
-const Login1 = () => {
+const Login = () => {
     const navigate = useNavigate();
     const userSubmit = async (formdata) => {
       console.log(formdata);
@@ -154,4 +154,4 @@ const Login1 = () => {
   );
 };
 
-export default Login1;
+export default Login;

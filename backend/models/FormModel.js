@@ -1,7 +1,7 @@
 const { Types } = require('mongoose');
 const {Schema,model} = require('../connection');
 
-const myScheme = new Schema({
+const mySchema = new Schema({
     title: String,
     description: String,
     data: String,
@@ -15,4 +15,4 @@ const myScheme = new Schema({
 
 });
 
-module.exports = model('usercollection',myschema);
+module.exports = model('usercollection',mySchema);
