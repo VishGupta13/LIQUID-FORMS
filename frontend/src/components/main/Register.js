@@ -14,6 +14,7 @@ const Register = () => {
         if(id === "firstName"){
             setFirstName(value);
         }
+        
         if(id === "lastName"){
             setLastName(value);
         }

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
-
-const url = "mongodb+srv://visgupta13:vishalgupta13@cluster0.7kur5.mongodb.net/LIQUID-FORMS?retryWrites=true&w=majority"
-
+const api_config = require('./config');
+const url = api_config.dbUrl;
 mongoose.connect(url)
 .then(() =>{
     console.log('Connected to database');

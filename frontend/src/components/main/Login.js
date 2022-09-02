@@ -2,14 +2,16 @@ import { Formik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import app_config from "../../config";
 import "./Login.css";
 
 const Login = () => {
+   const url = app_config.backend_url;
     const navigate = useNavigate();
     const userSubmit = async (formdata) => {
       console.log(formdata);
   
-      const res = await fetch("http://localhost:5000/user/authenticate", {
+      const res = await fetch(url+"/user/authenticate", {
         method: "POST",
         body: JSON.stringify(formdata),
         headers: {

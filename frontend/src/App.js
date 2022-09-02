@@ -24,6 +24,7 @@ import ManageForms from './components/user/ManageForms';
 import FormSetting from './components/user/FormSetting';
 import Preview from './components/user/Preview';
 import Login from './components/main/Login';
+import CreateForm from './components/user/CreateForm';
 
 function App() {
   return (
@@ -57,6 +58,7 @@ function App() {
 
         
         <Route element={<User />} path="user">
+        <Route path="form" element={<CreateForm/>}/>
         <Route path="custom-design" element={<CustomDesign/>}/>
         <Route path="user-profile" element={<UserProfile/>}/>
         <Route path="manage-forms" element={<ManageForms/>}/>
