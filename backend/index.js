@@ -4,6 +4,7 @@ const api_config = require('./config');
 const app = express();
 const port = api_config.port;
 
+const FormRouter = require('./routers/FormRouter')
 const userRouter = require('./routers/userRouter');
 const cors = require('cors');
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 // middlewares - to intercept the request
 app.use('/user', userRouter);
+app.use('/form', FormRouter)
 
 
 app.get( '/home', (req, res) => { 

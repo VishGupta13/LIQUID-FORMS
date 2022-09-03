@@ -1,7 +1,10 @@
 import React from 'react'
+import { Outlet } from 'react-router-dom';
 const User = () => {
   return (
-    <div>index</div>
+    <div>
+      <Outlet />
+    </div>
   )
 }
 
