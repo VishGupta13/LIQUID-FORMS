@@ -67,6 +67,8 @@ function App() {
 
         
         <Route element={<User />} path="user">
+        <Route path="form" element={<CreateForm/>}/>
+        <Route path="A-form" element={<AddForm/>}/>
         <Route path="custom-design" element={<CustomDesign/>}/>
         <Route path="user-profile" element={<UserProfile/>}/>
         <Route path="manage-forms" element={<ManageForms/>}/>

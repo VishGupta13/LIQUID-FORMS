@@ -5,11 +5,12 @@ import Swal from "sweetalert2";
 import "./Login.css";
 
 const Login = () => {
+  const url = app_config.app_config
     const navigate = useNavigate();
     const userSubmit = async (formdata) => {
       console.log(formdata);
   
-      const res = await fetch("http://localhost:5000/user/authenticate", {
+      const res = await fetch(url+"/user/authenticate", {
         method: "POST",
         body: JSON.stringify(formdata),
         headers: {
@@ -17,7 +18,7 @@ const Login = () => {
         },
       });
   
-      if (res.status === 200) {
+      if (response.status === 200) {
         console.log("success");
         Swal.fire({
           icon: "success",

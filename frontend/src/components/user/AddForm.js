@@ -53,7 +53,7 @@ import app_config from "../../config";
 //   },
 // }));
 
-const AddCourse = () => {
+const AddForm = () => {
   const url = app_config.api_url;
 
   const prerequisites = [
@@ -505,4 +505,4 @@ function TabPanel(props) {
   );
 }
 
-export default AddCourse;
+export default AddForm;

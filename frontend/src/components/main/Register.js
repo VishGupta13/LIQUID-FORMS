@@ -2,9 +2,11 @@ import { Formik } from 'formik';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import app_config from '../../config';
 import './Register.css';
 const Register = () => {
-
+    const url = app_config.api_url;
+    
   const navigate = useNavigate()
   const userSubmit = async (formdata) => {
     console.log(formdata);
@@ -330,4 +332,4 @@ const Register = () => {
   )
 }
 
-export default Register;
+export default Register
