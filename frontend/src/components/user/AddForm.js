@@ -87,7 +87,7 @@ const AddForm = () => {
   const [imgPath, setImgPath] = useState("");
   const [avatar, setAvatar] = useState("");
   const [currentUser, setCurrentUser] = useState(
-    JSON.parse(sessionStorage.getItem("trainer"))
+    JSON.parse(sessionStorage.getItem("user"))
   );
 
   const courseForm = {
@@ -341,6 +341,34 @@ const AddForm = () => {
     );
   };
 
+  const userForm = {
+    title: "",
+    description: "",
+    createdBy: currentUser._id,
+    createdAt: new Date()
+  };
+
+  // 2. Create a function for form submission
+  const userSubmit = (formdata) => {
+    console.log(formdata);
+    fetch("http://localhost:5000/form/add", {
+      method: "POST",
+      body: JSON.stringify(formdata), //convert javascript to json
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log("data saved");
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Form Created Successfully!!👍",
+        });
+      }
+    });
+  };
+
   return (
     <div className="col-md-8 mx-auto mt-5">
       <Paper square>
@@ -353,13 +381,52 @@ const AddForm = () => {
           aria-label="icon label tabs example"
         >
           <Tab icon={<Assignment />} label="Course Details" />
-          <Tab icon={<Ballot />} label="Curriculum" />
           <Tab icon={<PersonPin />} label="Additional" />
         </Tabs>
       </Paper>
 
       <TabPanel value={value} index={0}>
-        <h3>Course Title</h3>
+
+        <div className="basic-details">
+        <Formik initialValues={userForm} onSubmit={userSubmit} 
+      // validationSchema={formSchema}
+       >
+        {({ handleSubmit, handleChange, values, errors, touched }) => (
+          <form onSubmit={handleSubmit}>
+            <TextField
+              label="title"
+              variant="outlined"
+              className="w-100 mb-4"
+              id="title"
+              onChange={handleChange}
+              value={values.title}
+              // className="form-control form-control-lg"
+              // helperText={touched.username ? errors.username : ''}
+              // error={Boolean(errors.username && touched.username)}
+            />
+            
+            <TextField
+              label="description"
+              variant="outlined"
+              className="w-100 mb-4"
+              id="description"
+              onChange={handleChange}
+              value={values.description}
+              // className="form-control form-control-lg"
+              // helperText={touched.email ? errors.email : ''}
+              // error={Boolean(errors.email && touched.email)}
+            />
+            {/* <button type="submit" className="btn btn-warning btn-lg ms-2">
+              Submit
+            </button> */}
+          </form>
+        )}
+      </Formik>
+        </div>
+
+        <div className="form-customizer">
+        {renderCourse()}
+        </div>
 
         <div className="row">
           <div className="col-md-6">{showThumb()}</div>
@@ -475,11 +542,9 @@ const AddForm = () => {
         </Formik>
       </TabPanel>
 
+      
       <TabPanel value={value} index={1}>
-        {renderCourse()}
-      </TabPanel>
-      <TabPanel value={value} index={2}>
-        Item Three
+        Item Two
       </TabPanel>
     </div>
   );
@@ -490,6 +555,7 @@ function TabPanel(props) {
 
   return (
     <div
+    className="p-5"
       role="tabpanel"
       hidden={value !== index}
       id={`wrapped-tabpanel-${index}`}

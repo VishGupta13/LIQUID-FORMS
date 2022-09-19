@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
 
 import Admin from './components/admin';
 import AdminProfile from './components/admin/Profile';
@@ -40,6 +40,7 @@ function App() {
       
       <BrowserRouter>
       <Routes>
+        <Route element={<Navigate to="/main/home" />} path="/" />
 
         <Route element={<Main />} path="main">
         <Route path="home" element={<Home />}/>
@@ -50,11 +51,6 @@ function App() {
         <Route path="header" element={<Header />}/>
         <Route path="usermanager" element={<UserManager />}/>
        
-
-
-
-
-
         </Route>
         <Route element={<Admin />} path="admin">
         <Route path="admin-profile" element={<AdminProfile />}/>

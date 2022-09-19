@@ -2,15 +2,16 @@ import { Formik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import app_config from "../../config";
 import "./Login.css";
 
 const Login = () => {
-  const url = app_config.app_config
+  const url = app_config.backend_url;
     const navigate = useNavigate();
     const userSubmit = async (formdata) => {
       console.log(formdata);
   
-      const res = await fetch(url+"/user/authenticate", {
+      const response = await fetch(url+"/user/authenticate", {
         method: "POST",
         body: JSON.stringify(formdata),
         headers: {
@@ -26,7 +27,7 @@ const Login = () => {
           text: "Enter a new World!!",
         });
         navigate("/user/add-form");
-        const data = await res.json();
+        const data = await response.json();
         sessionStorage.setItem("user", JSON.stringify(data));
       } else {
         console.log("Login error ");
