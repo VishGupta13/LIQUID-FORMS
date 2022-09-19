@@ -90,4 +90,4 @@ router.post('/authenticate', (req, res) => {
     })
 })
 
-module.exports = Router;
+module.exports = router;

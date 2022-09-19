@@ -2,16 +2,14 @@ import { Formik } from "formik";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import app_config from "../../config";
 import "./Login.css";
 
 const Login = () => {
-   const url = app_config.backend_url;
     const navigate = useNavigate();
     const userSubmit = async (formdata) => {
       console.log(formdata);
   
-      const res = await fetch(url+"/user/authenticate", {
+      const res = await fetch("http://localhost:5000/user/authenticate", {
         method: "POST",
         body: JSON.stringify(formdata),
         headers: {
@@ -26,7 +24,7 @@ const Login = () => {
           title: "Wellcome!!👌",
           text: "Enter a new World!!",
         });
-        navigate("/subscribermanager");
+        navigate("/user/add-form");
         const data = await res.json();
         sessionStorage.setItem("user", JSON.stringify(data));
       } else {
@@ -39,6 +37,7 @@ const Login = () => {
       }
   
     };
+    
     
   return (
     <div>
@@ -54,8 +53,10 @@ const Login = () => {
             </div>
             <div className="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
             <Formik
-                initialValues={{ email: "", password: "" }}
-                onSubmit={userSubmit}
+                initialValues={{ 
+                  email: "", 
+                  password: "" }}
+                  onSubmit={userSubmit}
               >
                 {({ values, handleChange, handleSubmit }) => (
                   <form onSubmit={handleSubmit}>

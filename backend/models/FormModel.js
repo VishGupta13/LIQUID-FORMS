@@ -15,4 +15,4 @@ const mySchema = new Schema({
 
 });
 
-module.exports = model('usercollection',mySchema);
+module.exports = model('formcollection',mySchema);

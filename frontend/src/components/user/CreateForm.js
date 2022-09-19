@@ -1,17 +1,19 @@
 import { Button, TextField } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { Formik } from "formik";
 import Swal from "sweetalert2";
 import * as Yup from 'yup';
 // import './Login';
 
 const CreateForm = () => {
+
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
+
   const userForm = {
-    name: "",
-    email: "",
-    avtar: "",
-    createAt: 0,
-    password: "",
+    title: "",
+    description: "",
+    createdBy: currentUser._id,
+    createdAt: new Date()
   };
 
   // 2. Create a function for form submission
