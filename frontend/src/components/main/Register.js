@@ -97,7 +97,7 @@ const Register = () => {
                       <div className="form-outline">
                         <input
                           type="text"
-                          id="last name"
+                          id="lastname"
                           value={values.lastname}
                           onChange={handleChange}
                           className="form-control form-control-lg"

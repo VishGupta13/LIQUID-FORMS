@@ -78,18 +78,18 @@ const UserManager = () => {
           <td>{email}</td>
           <td>{password}</td>
           <td>
-            <Button
+            <button
               className="btn btn-primary"
               onClick={(e) => updateUser({ _id, firstname, lastname, email,password })}
             >
               {" "}
               <i class="fas fa-pen-nib"></i>
-            </Button>
+            </button>
           </td>
           <td>
-            <Button className="btn btn-danger" onClick={(e) => deleteUser(_id)}>
+            <button className="btn btn-danger" onClick={(e) => deleteUser(_id)}>
               <i class="fas fa-trash"></i>{" "}
-            </Button>
+            </button>
           </td>
         </tr>
       ));
