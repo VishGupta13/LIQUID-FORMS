@@ -15,7 +15,7 @@ import Login from './components/main/Login';
 import Home from './components/main/Home';
 import ResetPassword from './components/main/ResetPassword';
 import Header from './components/main/Header';
-import UserManager from './components/main/Usermanager';
+import UserManager from './components/admin/Usermanager';
 
 
 import User from './components/user';
@@ -49,12 +49,13 @@ function App() {
         <Route path="reset-password" element={<ResetPassword />}/>
         <Route path="contact-us" element={<ContactUs />}/>
         <Route path="header" element={<Header />}/>
-        <Route path="usermanager" element={<UserManager />}/>
+        
        
         </Route>
         <Route element={<Admin />} path="admin">
         <Route path="admin-profile" element={<AdminProfile />}/>
         <Route path="dashboard" element={<Dashboard />}/>
+        <Route path="usermanager" element={<UserManager />}/>
         
         <Route path="manageuser" element={<ManageUser />}/>
 
@@ -64,7 +65,7 @@ function App() {
         
         <Route element={<User />} path="user">
         <Route path="form" element={<CreateForm/>}/>
-        <Route path="A-form" element={<AddForm/>}/>
+        {/* <Route path="A-form" element={<AddForm/>}/> */}
         <Route path="custom-design" element={<CustomDesign/>}/>
         <Route path="user-profile" element={<UserProfile/>}/>
         <Route path="manage-forms" element={<ManageForms/>}/>
