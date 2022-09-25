@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import Swal from "sweetalert2";
 import * as Yup from 'yup';
 // import './Login';
+import './CreateForm.css';
 
 const CreateForm = () => {
 
@@ -50,7 +51,7 @@ const CreateForm = () => {
   // });
 
   return (
-    <div className="container">
+    <div className="cont">
       <h1>Create From</h1>
       <hr className="mb-5" />
 

@@ -37,6 +37,9 @@ const Header = () => {
               <a class="nav-link" href="/main/reset-password">
                 ResetPassword
               </a>
+              <a class="nav-link" href="/user/create-form">
+                Create Forms
+              </a>
 
               <a class="nav-link disabled">Disabled</a>
               <span class="input-group-text border-0" id="search-addon">
