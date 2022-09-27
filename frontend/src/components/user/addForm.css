@@ -1,3 +1,12 @@
 .section-input{
     border-bottom: 2px solid black;
 }
+
+.form-section{
+    padding: 20px;
+    border: 2px solid red;
+}
+
+.ques-accordion{
+    background: yellow;
+}

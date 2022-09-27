@@ -1,6 +1,4 @@
-// import {ExpandMoreIcon} from "@mui/material";
-// import {AssignmentIcon} from "@mui/material";
-// import {PersonPinIcon} from "@mui/material";
+
 import { ExpandMore } from "@mui/icons-material";
 import { Assignment } from "@mui/icons-material";
 import { PersonPin } from "@mui/icons-material";
@@ -9,15 +7,11 @@ import update from "immutability-helper";
 
 
 import {
-  Autocomplete,
   Accordion,
   AccordionActions,
   AccordionDetails,
   AccordionSummary,
   Button,
-  Card,
-  CardContent,
-  Chip,
   FormControl,
   InputBase,
   InputLabel,
@@ -26,9 +20,7 @@ import {
   Select,
   Tab,
   Tabs,
-  TextField,
-  Typography,
-  makeStyles,
+  TextField
 } from "@mui/material";
 import React, { useState } from "react";
 
@@ -38,53 +30,38 @@ import Swal from "sweetalert2";
 import app_config from "../../config";
 import './addForm.css';
 
-// const styles = makeStyles((theme) => ({
-//   root: {
-//     flexGrow: 1,
-//     maxWidth: "100%",
-//   },
-//   tabPanel: {
-//     padding: "2rem",
-//   },
-//   input: {
-//     width: "100%",
-//     marginTop: "3rem",
-//   },
-//   formControl: {
-//     marginTop: "3rem",
-//     width: "100%",
-//   },
-// }));
-
 const AddForm = () => {
   const url = app_config.api_url;
 
-  const prerequisites = [
-    "HTML",
-    "CSS",
-    "JavaScript Basics",
-    "Python Basics",
-    "Flexbox",
-  ];
+  const answerTypes = [
+    'smalltext',
+    'longtext',
+    'checkbox',
+    'radio',
+    'file',
+  ]
+
   const [tempForm, setTempForm] = useState({});
 
   const [value, setValue] = React.useState(0);
   const [formData, setFormData] = React.useState({
     sections: [
       {
-        name: "Introduction",
-        description: "Section 1 Description",
-        lectures: [
+        name: "Untitled Section",
+        description: "",
+        questions: [
           {
-            name: "Lecture 1",
-            description: "",
-            content: "",
-            resources: [],
+            name: "",
+            marks: "",
+            answertype: "shorttext",
           },
         ],
       },
     ],
   });
+
+
+
   const [dataReady, setDataReady] = React.useState(false);
 
   const [imgPath, setImgPath] = useState("");
@@ -139,10 +116,10 @@ const AddForm = () => {
     const newSection = {
       name: "Untitled Section",
       description: "Section Description",
-      lectures: [
+      questions: [
         {
-          name: "Lecture 1",
-          description: "Lecture 1 Description",
+          name: "question 1",
+          description: "question 1 Description",
           content: "",
           resources: [],
         },
@@ -158,16 +135,16 @@ const AddForm = () => {
     setFormData(newData);
   };
 
-  const addNewLecture = (sect_index) => {
-    const newLecture = {
-      name: "Untitled Lecture",
-      description: "Lecture Description",
+  const addNewQuestion = (sect_index) => {
+    const newQuestion = {
+      name: "Untitled question",
+      description: "question Description",
       content: "",
       resources: [],
     };
 
     const sections = {};
-    sections[sect_index] = { lectures: { $push: [newLecture] } };
+    sections[sect_index] = { questions: { $push: [newQuestion] } };
 
     const newData = update(formData, {
       sections: sections,
@@ -176,15 +153,15 @@ const AddForm = () => {
     setFormData(newData);
   };
 
-  const handleRename = (prop, val, sect_i, lect_i) => {
+  const handleRename = (prop, val, sect_i, ques_i) => {
     const sections = {};
-    const lectures = {};
+    const questions = {};
     if (prop == "lect_name") {
-      lectures[lect_i] = { name: { $set: val } };
-      sections[sect_i] = { lectures: lectures };
+      questions[ques_i] = { name: { $set: val } };
+      sections[sect_i] = { questions: questions };
     } else if (prop == "lect_desc") {
-      lectures[lect_i] = { description: { $set: val } };
-      sections[sect_i] = { lectures: lectures };
+      questions[ques_i] = { description: { $set: val } };
+      sections[sect_i] = { questions: questions };
     } else if (prop == "sect_name") {
       sections[sect_i] = { name: { $set: val } };
     } else if (prop == "sect_desc") {
@@ -198,7 +175,7 @@ const AddForm = () => {
     setFormData(newData);
   };
 
-  const handleFileUpload = (prop, file, sect_i, lect_i) => {
+  const handleFileUpload = (prop, file, sect_i, ques_i) => {
     const formData = new FormData();
     formData.append("myfile", file);
     console.log(file);
@@ -210,10 +187,10 @@ const AddForm = () => {
     console.log(prop);
 
     const sections = {};
-    const lectures = {};
+    const questions = {};
 
-    lectures[lect_i] = { content: { $set: file.name } };
-    sections[sect_i] = { lectures: lectures };
+    questions[ques_i] = { content: { $set: file.name } };
+    sections[sect_i] = { questions: questions };
 
     const newData = update(formData, {
       sections: sections,
@@ -265,12 +242,7 @@ const AddForm = () => {
       <div>
         {formData.sections.map((section, sect_i) => (
           <div
-            style={{
-              padding: "2rem",
-              border: "1px solid gray",
-              background: "grey",
-              marginTop: "1rem",
-            }}
+            className="form-section"
             key={sect_i}
           >
             <h3>
@@ -289,50 +261,49 @@ const AddForm = () => {
                 handleRename("sect_desc", e.target.value, sect_i, 0)
               }
             ></InputBase>
-            {section.lectures.map((lecture, lect_i) => (
-              <Accordion key={lect_i}>
+            {section.questions.map((question, ques_i) => (
+              <Accordion key={ques_i}>
                 <AccordionSummary expandIcon={<ExpandMore />}>
                   <h4>
-                    Lecture {`${lect_i + 1}: `}
+                    question {`${ques_i + 1}: `}
                     <InputBase
-                      value={lecture.name}
+                      value={question.name}
                       onChange={(e) =>
                         handleRename(
-                          "lect_name",
+                          "ques_name",
                           e.target.value,
                           sect_i,
-                          lect_i
+                          ques_i
                         )
                       }
                     ></InputBase>
                   </h4>
                 </AccordionSummary>
                 <AccordionDetails>
-                  <InputBase
-                    value={lecture.description}
-                    onChange={(e) =>
-                      handleRename("lect_desc", e.target.value, sect_i, lect_i)
-                    }
-                  ></InputBase>
-                  <label>Lecture Content</label>
-                  <input
-                    type="file"
-                    onChange={(e) =>
-                      handleFileUpload(
-                        "content",
-                        e.target.files[0],
-                        sect_i,
-                        lect_i
-                      )
-                    }
-                  />
+                <FormControl fullWidth>
+  <InputLabel id="sel-answer-type">Select Answer Type</InputLabel>
+  <Select
+    labelId="sel-answer-type"
+    id="sel-answer"
+    value={question.answertype}
+    label="Select Answer Type"
+    // onChange={handleChange}
+  >
+    {
+      answerTypes.map(type => (
+        <MenuItem value={type}>{type}</MenuItem>
+      ))
+    }
+  </Select>
+  </FormControl>
+                  
                 </AccordionDetails>
 
                 <AccordionActions></AccordionActions>
               </Accordion>
             ))}
-            <Button onClick={(e) => addNewLecture(sect_i)}>
-              Add New Lecture
+            <Button onClick={(e) => addNewQuestion(sect_i)}>
+              Add New question
             </Button>
           </div>
         ))}
