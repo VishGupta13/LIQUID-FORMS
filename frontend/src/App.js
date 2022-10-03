@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import Admin from './components/admin';
 import AdminProfile from './components/admin/Profile';
@@ -27,7 +27,7 @@ import FormSetting from './components/user/FormSetting';
 import Preview from './components/user/Preview';
 import CreateForm from './components/user/CreateForm';
 import AddForm from './components/user/AddForm';
-import Authorize from './components/user/Auth';
+import Authorize from './Auth';
 
 
 
@@ -37,56 +37,56 @@ function App() {
   return (
     <div>
 
-      
+
       <BrowserRouter>
-      <Routes>
-        <Route element={<Navigate to="/main/home" />} path="/" />
+        <Routes>
+          <Route element={<Navigate to="/main/home" />} path="/" />
 
-        <Route element={<Main />} path="main">
-        <Route path="home" element={<Home />}/>
-        <Route path="login" element={<Login />}/>
-        <Route path="register" element={<Register />}/>
-        <Route path="reset-password" element={<ResetPassword />}/>
-        <Route path="contact-us" element={<ContactUs />}/>
-        <Route path="header" element={<Header />}/>
-        
-       
-        </Route>
-        <Route element={<Admin />} path="admin">
-        <Route path="admin-profile" element={<AdminProfile />}/>
-        <Route path="dashboard" element={<Dashboard />}/>
-        <Route path="usermanager" element={<UserManager />}/>
-        
-        <Route path="manageuser" element={<ManageUser />}/>
+          <Route element={<Main />} path="main">
+            <Route path="home" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="reset-password" element={<ResetPassword />} />
+            <Route path="contact-us" element={<ContactUs />} />
+            <Route path="header" element={<Header />} />
 
-        </Route>
-        
 
-        
-        <Route element={<User />} path="user">
-        <Route path="form" element={<CreateForm/>}/>
-        {/* <Route path="A-form" element={<AddForm/>}/> */}
-        <Route path="custom-design" element={<CustomDesign/>}/>
-        <Route path="user-profile" element={<UserProfile/>}/>
-        <Route path="manage-forms" element={<ManageForms/>}/>
-        <Route path="form-setting" element={<FormSetting/>}/>
-        <Route path="preview" element={<Preview/>}/>
-        <Route path="home" element={<UserHome />}/>
-        <Route path="create-form" element={<CreateForm/>}/>
-        <Route path="add-form" element={<Authorize><AddForm/></Authorize>}/>
-        
-        
-        
-        
-        
-        
-        
-        
+          </Route>
+          <Route element={<Admin />} path="admin">
+            <Route path="admin-profile" element={<AdminProfile />} />
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="usermanager" element={<UserManager />} />
 
-        </Route>
+            <Route path="manageuser" element={<ManageUser />} />
 
-        
-        </Routes>      
+          </Route>
+
+
+
+          <Route element={<User />} path="user">
+            <Route path="form" element={<CreateForm />} />
+            {/* <Route path="A-form" element={<AddForm/>}/> */}
+            <Route path="custom-design" element={<CustomDesign />} />
+            <Route path="user-profile" element={<UserProfile />} />
+            <Route path="manage-forms" element={<ManageForms />} />
+            <Route path="form-setting" element={<FormSetting />} />
+            <Route path="preview" element={<Preview />} />
+            <Route path="home" element={<UserHome />} />
+            <Route path="create-form" element={<CreateForm />} />
+            <Route path="add-form" element={<Authorize><AddForm /></Authorize>} />
+
+
+
+
+
+
+
+
+
+          </Route>
+
+
+        </Routes>
       </BrowserRouter>
     </div>
   );

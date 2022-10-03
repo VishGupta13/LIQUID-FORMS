@@ -42,9 +42,9 @@ const Register = () => {
 
 
   return (
-    <div><section className="h-100 bg-dark"> 
-    <div className="container py-5 h-100">
-      <div className="row d-flex justify-content-center align-items-center h-100">
+    <div><section className="h-100 bg-white"> 
+    <div className="container py-5 h-90 ">
+      <div className="row d-flex justify-content-center align-items-center h-70">
         <div className="col">
           <div className="card card-registration my-4">
             <div className="row g-0">

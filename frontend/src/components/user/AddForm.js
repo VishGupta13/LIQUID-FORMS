@@ -127,9 +127,9 @@ const AddForm = () => {
       ],
     };
     <div class="form-outline">
-  <input type="text" id="form12" class="form-control" />
-  <label class="form-label" for="form12">question 1</label>
-</div>
+      <input type="text" id="form12" class="form-control" />
+      <label class="form-label" for="form12">question 1</label>
+    </div>
 
     const newData = update(formData, {
       sections: {
@@ -244,7 +244,7 @@ const AddForm = () => {
 
   const renderCourse = () => {
     return (
-      <div>
+      <div className="">
         {formData.sections.map((section, sect_i) => (
           <div
             className="form-section"
@@ -285,23 +285,23 @@ const AddForm = () => {
                   </h4>
                 </AccordionSummary>
                 <AccordionDetails>
-                <FormControl fullWidth>
-  <InputLabel id="sel-answer-type">Select Answer Type</InputLabel>
-  <Select
-    labelId="sel-answer-type"
-    id="sel-answer"
-    value={question.answertype}
-    label="Select Answer Type"
-    // onChange={handleChange}
-  >
-    {
-      answerTypes.map(type => (
-        <MenuItem value={type}>{type}</MenuItem>
-      ))
-    }
-  </Select>
-  </FormControl>
-                  
+                  <FormControl fullWidth>
+                    <InputLabel id="sel-answer-type">Select Answer Type</InputLabel>
+                    <Select
+                      labelId="sel-answer-type"
+                      id="sel-answer"
+                      value={question.answertype}
+                      label="Select Answer Type"
+                    // onChange={handleChange}
+                    >
+                      {
+                        answerTypes.map(type => (
+                          <MenuItem value={type}>{type}</MenuItem>
+                        ))
+                      }
+                    </Select>
+                  </FormControl>
+
                 </AccordionDetails>
 
                 <AccordionActions></AccordionActions>
@@ -352,9 +352,13 @@ const AddForm = () => {
   };
 
   return (
-    <div className="col-md-8 mx-auto mt-5 w-100">
-      <Paper square>
+    <div className="col-md-8 mx-auto pt-4 w-100">
+      <div className="container">
+
+      
+      <Paper square >
         <Tabs
+
           value={value}
           onChange={handleChange}
           variant="fullWidth"
@@ -363,67 +367,69 @@ const AddForm = () => {
           aria-label="icon label tabs example"
         >
           <Tab icon={<Assignment />} label="Create Your Forms" />
-          <Tab icon={<PersonPin />} label="Additional" />
+          <Tab icon={<PersonPin />} label="Setting" />
+          <Tab icon={<PersonPin />} label="Responses" />
         </Tabs>
       </Paper>
 
       <TabPanel value={value} index={0}>
 
         <div className="basic-details">
-        <Formik initialValues={userForm} onSubmit={userSubmit} 
-      // validationSchema={formSchema}
-       >
-        {({ handleSubmit, handleChange, values, errors, touched }) => (
-          <form onSubmit={handleSubmit}>
-            <TextField
-              label="title"
-              variant="outlined"
-              className="w-100 mb-4"
-              id="title"
-              onChange={handleChange}
-              value={values.title}
-              // className="form-control form-control-lg"
-              // helperText={touched.username ? errors.username : ''}
-              // error={Boolean(errors.username && touched.username)}
-            />
-            
-            <TextField
-              label="description"
-              variant="outlined"
-              className="w-100 mb-4"
-              id="description"
-              onChange={handleChange}
-              value={values.description}
-              // className="form-control form-control-lg"
-              // helperText={touched.email ? errors.email : ''}
-              // error={Boolean(errors.email && touched.email)}
-            />
-            {/* <button type="submit" className="btn btn-warning btn-lg ms-2">
+          <Formik initialValues={userForm} onSubmit={userSubmit}
+          // validationSchema={formSchema}
+          >
+            {({ handleSubmit, handleChange, values, errors, touched }) => (
+              <form onSubmit={handleSubmit}>
+                <TextField
+                  label="title"
+                  variant="outlined"
+                  className="w-50 mb-4"
+                  id="title"
+                  onChange={handleChange}
+                  value={values.title}
+                // className="form-control form-control-lg"
+                // helperText={touched.username ? errors.username : ''}
+                // error={Boolean(errors.username && touched.username)}
+                />
+
+                <TextField
+                  label="description"
+                  variant="outlined"
+                  className="w-50 mb-4"
+                  id="description"
+                  onChange={handleChange}
+                  value={values.description}
+                // className="form-control form-control-lg"
+                // helperText={touched.email ? errors.email : ''}
+                // error={Boolean(errors.email && touched.email)}
+                />
+                {/* <button type="submit" className="btn btn-warning btn-lg ms-2">
               Submit
             </button> */}
-          </form>
-        )}
-      </Formik>
+              </form>
+            )}
+          </Formik>
         </div>
 
         <div className="form-customizer">
-        {renderCourse()}
+          {renderCourse()}
         </div>
 
-        
+
         <Formik initialValues={courseForm} onSubmit={onFormSubmit}>
           {({ values, handleChange, handleSubmit, isSubmitting }) => (
             <form onSubmit={handleSubmit}>
-              
+
             </form>
           )}
         </Formik>
       </TabPanel>
 
-      
+
       <TabPanel value={value} index={1}>
         Item Two
       </TabPanel>
+      </div>
     </div>
   );
 };
@@ -433,7 +439,7 @@ function TabPanel(props) {
 
   return (
     <div
-    className="p-0  "
+      className="p-0  "
       role="tabpanel"
       hidden={value !== index}
       id={`wrapped-tabpanel-${index}`}

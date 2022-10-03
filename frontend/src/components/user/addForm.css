@@ -4,17 +4,25 @@
 
 .form-section{
     padding: 50px;
-    border: 2px solid red;
+    border-left: 10px solid red;
+    border-bottom: 10px solid red;
+    border-top: 10px solid red;
+    border-right: 10px solid red;
+
 }
 
 .ques-accordion{
     background: yellow;
 }
-body {
-    background-color: lightblue;
+#body {
+    background-color: yellow;
   }
+
+.colobg{
+  background-color: aquamarine;
+}
 .form-section {
-    border-style: solid;
+    /* border-style: solid; */
     border-width: 5px;
   }
   .form-section{
