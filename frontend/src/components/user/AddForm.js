@@ -41,6 +41,7 @@ const AddForm = () => {
     'file',
   ]
 
+
   const [tempForm, setTempForm] = useState({});
 
   const [value, setValue] = React.useState(0);
@@ -125,6 +126,10 @@ const AddForm = () => {
         },
       ],
     };
+    <div class="form-outline">
+  <input type="text" id="form12" class="form-control" />
+  <label class="form-label" for="form12">question 1</label>
+</div>
 
     const newData = update(formData, {
       sections: {
@@ -302,12 +307,14 @@ const AddForm = () => {
                 <AccordionActions></AccordionActions>
               </Accordion>
             ))}
-            <Button onClick={(e) => addNewQuestion(sect_i)}>
+            {/* <Button onClick={(e) => addNewQuestion(sect_i)}>
               Add New question
-            </Button>
+            </Button> */}
+            <Button onClick={(e) => addNewQuestion(sect_i)} variant="outlined">ADD NEW QUESTION</Button>
           </div>
         ))}
-        <Button onClick={addNewSection}>Add New Section</Button>
+        {/* <button onClick={addNewSection}>Add New Section</button> */}
+        <Button onClick={addNewSection} variant="contained">Add New Section</Button>
 
         {/* <Button className="w-100 mt-5" onClick={createCourse}>
           Create Course

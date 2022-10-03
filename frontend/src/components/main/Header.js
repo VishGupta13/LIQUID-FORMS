@@ -37,12 +37,14 @@ const Header = () => {
               <a class="nav-link" href="/main/reset-password">
                 ResetPassword
               </a>
-              <a class="nav-link" href="/user/create-form">
-                Create Forms
+              <a class="nav-link" href="/user/add-form">
+                Add Forms
               </a>
 
               <a class="nav-link disabled">Disabled</a>
               <span class="input-group-text border-0" id="search-addon">
+
+              
                 <i class="fas fa-search"></i>
               </span>
             </div>
